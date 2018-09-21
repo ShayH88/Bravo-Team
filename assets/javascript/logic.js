@@ -10,11 +10,12 @@ $(document).ready(function () {
             url: urlQuery,
             method: "GET"
         }).then(function (res) {
+            console.log(res);
             display();
         });
     }
     function display(){
-        
+
     }
     $("button").on("click", function(){
         var searchTerm = $("#search-term").val();
@@ -30,7 +31,7 @@ $(document).ready(function () {
         urlQuery += "?" + $.param({
             'end-date': endDate,
         });
-
+        console.log(urlQuery);
         query();
     });
 
