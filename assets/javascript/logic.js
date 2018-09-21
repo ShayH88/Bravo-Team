@@ -5,15 +5,35 @@ $(document).ready(function () {
         'api-key': api_key
     });
 
-    $.ajax({
-        url: urlQuery,
-        method: "GET"
-    }).then(function () {
+    function query(){
+        $.ajax({
+            url: urlQuery,
+            method: "GET"
+        }).then(function (res) {
+            display();
+        });
+    }
+    function display(){
         
-    });
+    }
     $("button").on("click", function(){
         var searchTerm = $("#search-term").val();
         var startDate = $("#start-date").val();
+        var limit = $("#search-limit").val();
+        var endDate = $("#end-date").val();
+        urlQuery += "?" + $.param({
+            'q': searchTerm,
+        });
+        urlQuery += "?" + $.param({
+            'start-date': startDate,
+        });
+        urlQuery += "?" + $.param({
+            'end-date': endDate,
+        });
+
+        query();
     });
+
+    
 
 });
